@@ -1,0 +1,26 @@
+{% extends "book/base.html" %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<h1><b>You are already logged in as <i>"{{ user.username }}</i></b></h1>
+{% else %}
+<h1>Login:</h1>
+<hr/>
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+<table>
+	<tr>
+    	<td>{{ form.username.label_tag }}</td>
+    	<td>{{ form.username }}</td>
+	</tr>
+	<tr>
+    	<td>{{ form.password.label_tag }}</td>
+    	<td>{{ form.password }}</td>
+	</tr>
+</table>
+
+<input type="submit" value="Confirm">
+</form>
+{% endif %}
+{% endblock content %}

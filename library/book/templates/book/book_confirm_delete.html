@@ -1,0 +1,9 @@
+{% extends "book/base.html" %}
+
+{% block content %}
+<form method=post>
+	{% csrf_token %}
+	<p><b>Are you sure you want to remove <i>{{ book.title }}</i>?</b></p>
+	<input type=submit value=Delete>
+</form>
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends "book/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<p>This page is still a <b>beta</b>-version!</p>
+<h1>Register:</h1>
+<hr/>
+<form method=post>
+	{% csrf_token %}
+	{{ form|crispy }}
+	<input type=submit value="Confirm">
+</form>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "book/base.html" %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<p>Welcome: <i>{{ user.username }}</i>!</p>
+{% else %}
+<p>Welcome <i>quest</i>!</p>
+{% endif %}
+
+<h1>Book collection:</h1>
+<hr/>
+{% for book in object_list %}
+Title: <b>{{ book.title }}</b> - <b>{{ book.origin_year }}</b><br>
+Author: <b>{{ book.author}}</b>
+
+<p>
+	<button onclick="window.location.href='{{ book.get_absolute_url }}';">Details</button>
+	{% if user.is_authenticated %}
+	<button onclick="window.location.href='{{ book.get_absolute_url }}/update';">Edit</button>
+	<button onclick="window.location.href='{{ book.get_absolute_url }}/delete';">Delete</button>
+	{% endif %}
+	<br><br><br>	
+	{% endfor %}
+</p>
+{% if user.is_authenticated %}
+<p
+	><button onclick="window.location.href='/new';">Add a book to collection</button>
+</p>
+<p>
+	<a href="{% url 'logout' %}">Log Out</a>
+</p>
+{% else %}
+<p>
+	To be able to add your own favorite book, please 
+	<a href="{% url 'login' %}">log In</a><br>
+	Or if you dont have an account yet, please 
+	<a href="{% url 'register' %}">register</a>
+</p>
+{% endif %}
+{% endblock content %}
+{% block button %}
+{% endblock button %}
