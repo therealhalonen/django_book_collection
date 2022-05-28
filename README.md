@@ -35,4 +35,4 @@ Edit:
 
 Delete:
 
-![Image1](https://github.com/therealhalonen/python_web_service/blob/master/pw4/pws4/ss_delete.png)
+![Image1](https://github.com/therealhalonen/python_web_service/blob/master/pw4/res/ss_delete.png)
